@@ -36,6 +36,12 @@ Commands:
   pg available [flags]
     List postgres versions available to download.
 
+  pg install <version> [flags]
+    Install a postgres version.
+
+  pg rm <version> [flags]
+    Remove a postgres version.
+
 Run "pgdevserver <command> --help" for more information on a command.
 ```
 
