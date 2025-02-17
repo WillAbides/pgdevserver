@@ -3,12 +3,11 @@ builds:
   - goos:
       - linux
       - darwin
-      - windows
     env:
       - CGO_ENABLED=0
     ldflags:
       - -s -w -X main.version={{.Version}}
-    main: ./cmd/pgtestserver
+    main: ./cmd/pgdevserver
 checksum:
   name_template: 'checksums.txt'
 snapshot:

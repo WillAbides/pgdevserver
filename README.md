@@ -1,10 +1,10 @@
-# pgtestserver
+# pgdevserver
 
 ## Install With [bindown](https://github.com/WillAbides/bindown)
 
 ```shell
-bindown template-source add pgtestserver https://github.com/WillAbides/pgtestserver/releases/latest/download/bindown.yaml
-bindown dependency add pgtestserver --source pgtestserver -y
+bindown template-source add pgdevserver https://github.com/WillAbides/pgdevserver/releases/latest/download/bindown.yaml
+bindown dependency add pgdevserver --source pgdevserver -y
 ```
 
 ## Usage
@@ -12,11 +12,31 @@ bindown dependency add pgtestserver --source pgtestserver -y
 <!--- start usage output --->
 
 ```
-Usage: pgtestserver [flags]
+Usage: pgdevserver <command> [flags]
 
 Flags:
-  -h, --help       Show context-sensitive help.
-      --version    Output the pgtestserver version and exit.
+  -h, --help    Show context-sensitive help.
+
+Commands:
+  start [flags]
+    Start a server.
+
+  list [flags]
+    List servers.
+
+  stop [flags]
+    Stop a server.
+
+  rm [flags]
+    Remove a server.
+
+  pg list [flags]
+    List installed postgres versions.
+
+  pg available [flags]
+    List postgres versions available to download.
+
+Run "pgdevserver <command> --help" for more information on a command.
 ```
 
 <!--- end usage output --->

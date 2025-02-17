@@ -1,9 +1,9 @@
-# Contributing to pgtestserver
+# Contributing to pgdevserver
 
 Your contributions are welcome here. Feel free to open issues and pull requests.
 If you have a non-trivial change, you may want to open an issue before spending
 much time coding, so we can discuss whether the change will be a good fit for
-pgtestserver. But don't let that stop you from coding. Just be aware that
+pgdevserver. But don't let that stop you from coding. Just be aware that
 while all changes are welcome, not all will be merged.
 
 ## Releasing
@@ -14,7 +14,7 @@ have a release label. See the release-train readme for more details.
 
 ## Scripts
 
-pgtestserver uses a number of scripts to automate common tasks. They are found in the
+pgdevserver uses a number of scripts to automate common tasks. They are found in the
 `script` directory.
 
 <!--- start script descriptions --->
@@ -40,9 +40,9 @@ script/generate runs all generators for this repo.
 
 script/lint runs linters on the project.
 
-### pgtestserver
+### pgdevserver
 
-script/pgtestserver builds and runs the project with the given arguments.
+script/pgdevserver builds and runs the project with the given arguments.
 
 ### release-hook
 

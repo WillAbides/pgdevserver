@@ -21,10 +21,10 @@ $end_comment"
   echo "${data//$pattern/$replacement}" > "$file"
 }
 
-if [ -f script/pgtestserver ]; then
+if [ -f script/pgdevserver ]; then
   USAGE_OUTPUT="
 \`\`\`
-$(COLUMNS=100 script/pgtestserver --help)
+$(COLUMNS=100 script/pgdevserver --help)
 \`\`\`
 "
 fi
