@@ -52,16 +52,22 @@ func (c *listCmd) Run() (errOut error) {
 		header = append(header, "URL")
 	}
 	if !c.NoHeaders {
-		_, _ = fmt.Fprintln(tw, strings.Join(header, "\t"))
+		_, err = fmt.Fprintln(tw, strings.Join(header, "\t"))
+		if err != nil {
+			return err
+		}
 	}
 
 	for _, server := range servers {
-		c.listServer(ctx, server, tw)
+		err = c.listServer(ctx, server, tw)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
 
-func (c *listCmd) listServer(ctx context.Context, server *pgtestserver.Server, tw *tabwriter.Writer) {
+func (c *listCmd) listServer(ctx context.Context, server *pgtestserver.Server, tw *tabwriter.Writer) error {
 	line := []string{server.ID()}
 	var (
 		status     pgtestserver.Status
@@ -90,7 +96,8 @@ func (c *listCmd) listServer(ctx context.Context, server *pgtestserver.Server, t
 		}
 		line = append(line, u)
 	}
-	_, _ = fmt.Fprintln(tw, strings.Join(line, "\t"))
+	_, err := fmt.Fprintln(tw, strings.Join(line, "\t"))
+	return err
 }
 
 type startCmd struct {

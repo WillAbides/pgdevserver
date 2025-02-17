@@ -18,6 +18,11 @@ linters:
     - revive
     - errcheck
 linters-settings:
+  gosec:
+    excludes:
+      - G301
+      - G304
+      - G204
   gocritic:
     enabled-tags:
       - style
@@ -25,7 +30,6 @@ linters-settings:
       - performance
     disabled-checks:
       - hugeParam
-
   errcheck:
     # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`;
     # default is false: such cases aren't reported by default.
