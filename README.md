@@ -12,11 +12,31 @@ bindown dependency add pgtestserver --source pgtestserver -y
 <!--- start usage output --->
 
 ```
-Usage: pgtestserver [flags]
+Usage: pgtestserver <command> [flags]
 
 Flags:
-  -h, --help       Show context-sensitive help.
-      --version    Output the pgtestserver version and exit.
+  -h, --help    Show context-sensitive help.
+
+Commands:
+  start [flags]
+    Start a server.
+
+  list [flags]
+    List servers.
+
+  stop [flags]
+    Stop a server.
+
+  rm [flags]
+    Remove a server.
+
+  pg list [flags]
+    List installed postgres versions.
+
+  pg available [flags]
+    List postgres versions available to download.
+
+Run "pgtestserver <command> --help" for more information on a command.
 ```
 
 <!--- end usage output --->
