@@ -26,6 +26,16 @@ var help = kong.Vars{
 	"optionHelp":     "Extra options to pass to postgres. May be specified multiple times.",
 }
 
+type serverParams struct {
+	ID              string   `kong:"help='Act on the server with this ID. When set, other server options are ignored.'"`
+	PostgresVersion string   `kong:"name='pg',default='17.2.0',help=${postgresHelp}"`
+	ServerName      string   `kong:"default='default',help=${serverNameHelp}"`
+	InitDBArgs      []string `kong:"help=${initDBArgsHelp},placeholder='arg'"`
+	Port            string   `kong:"help=${portHelp}"`
+	PGOptions       []string `kong:"name='option',short='o',help='Extra options to pass to postgres. May be specified multiple times.',placeholder='option'"`
+	Recommended     bool     `kong:"name='recommended',help='Use recommended options'"`
+}
+
 func (p *serverParams) server(rootCache string) (*pgtestserver.Server, error) {
 	if p.ID != "" {
 		return pgtestserver.ServerFromCache(rootCache, p.ID)
@@ -47,16 +57,6 @@ func (p *serverParams) server(rootCache string) (*pgtestserver.Server, error) {
 type rootCmd struct {
 	ServerCmds serverCmds `kong:"embed"`
 	Pg         pgCmd      `kong:"cmd,help='Manage postgres binaries'"`
-}
-
-type serverParams struct {
-	ID              string   `kong:"help='Act on the server with this ID. When set, other server options are ignored.'"`
-	PostgresVersion string   `kong:"name='pg',default='17.2.0',help=${postgresHelp}"`
-	ServerName      string   `kong:"default='default',help=${serverNameHelp}"`
-	InitDBArgs      []string `kong:"help=${initDBArgsHelp},placeholder='arg'"`
-	Port            string   `kong:"help=${portHelp}"`
-	PGOptions       []string `kong:"name='option',short='o',help='Extra options to pass to postgres. May be specified multiple times.',placeholder='option'"`
-	Recommended     bool     `kong:"name='recommended',help='Use recommended options'"`
 }
 
 type cacheParams struct {

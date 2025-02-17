@@ -48,7 +48,7 @@ func TestServer(t *testing.T) {
 		ctx := context.Background()
 		cfg := Config{
 			PostgresVersion: "17.1.0",
-			CacheDir:        filepath.Join(t.TempDir()),
+			CacheDir:        t.TempDir(),
 		}
 		srv := New(cfg)
 		err := srv.Start(ctx)

@@ -93,11 +93,3 @@ func SortVersions(versions []string) {
 		return left.Compare(right)
 	})
 }
-
-func mustNewConstraints(v string) *semver.Constraints {
-	c, err := semver.NewConstraint(v)
-	if err != nil {
-		panic(err)
-	}
-	return c
-}

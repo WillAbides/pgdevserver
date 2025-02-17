@@ -258,6 +258,9 @@ func (s *Server) writeConfigFile(cacheDir string) (errOut error) {
 func (s *Server) populateCache(ctx context.Context, cacheDir string) (errOut error) {
 	dataDir := filepath.Join(cacheDir, "data")
 	err := s.writeConfigFile(cacheDir)
+	if err != nil {
+		return err
+	}
 	var args []string
 	args = appendFlagArg(args, "--pgdata", dataDir)
 	args = appendFlagArg(args, "--username", "postgres")
