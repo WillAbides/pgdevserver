@@ -16,10 +16,11 @@ import (
 )
 
 type serverCmds struct {
-	Start startCmd    `kong:"cmd,help='Start a server.'"`
-	List  listCmd     `kong:"cmd,help='List servers.'"`
-	Stop  stopCmd     `kong:"cmd,help='Stop a server.'"`
-	Rm    rmServerCmd `kong:"cmd,help='Remove a server.'"`
+	Start  startCmd    `kong:"cmd,help='Start a server.'"`
+	Create createCmd   `kong:"cmd,help='Create a server without starting it.'"`
+	List   listCmd     `kong:"cmd,help='List servers.'"`
+	Stop   stopCmd     `kong:"cmd,help='Stop a server.'"`
+	Rm     rmServerCmd `kong:"cmd,help='Remove a server.'"`
 }
 
 type listCmd struct {
@@ -129,6 +130,20 @@ func (c *startCmd) Run() error {
 	}
 	fmt.Println(pgURL)
 	return nil
+}
+
+type createCmd struct {
+	ServerParams serverParams `kong:"embed,group='Server Options'"`
+	CacheParams  cacheParams  `kong:"embed"`
+}
+
+func (c *createCmd) Run() error {
+	ctx := context.Background()
+	srv, err := c.ServerParams.server(c.CacheParams.cacheDir())
+	if err != nil {
+		return err
+	}
+	return srv.Create(ctx)
 }
 
 type stopCmd struct {
