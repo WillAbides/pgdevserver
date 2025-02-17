@@ -128,6 +128,11 @@ func (m *PGManager) InstalledVersions() ([]string, error) {
 	return versions, nil
 }
 
+func (m *PGManager) Remove(version string) error {
+	m.init()
+	return m.cache.Evict(pgCacheKey(version))
+}
+
 // rlockVersion obtains a read lock on the given version of postgres.
 func (m *PGManager) rlockVersion(ctx context.Context, version string) (dir string, unlock func() error, _ error) {
 	_, err := semver.NewVersion(version)
