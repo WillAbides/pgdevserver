@@ -189,6 +189,11 @@ func (s *Server) start(ctx context.Context, cacheDir string) (errOut error) {
 	return nil
 }
 
+func (s *Server) Create(ctx context.Context) error {
+	s.init()
+	return s.withCacheLock(ctx, func(cacheDir string) error { return nil })
+}
+
 func (s *Server) Stop(ctx context.Context) error {
 	s.init()
 	return s.withCacheLock(ctx, func(cacheDir string) error {
