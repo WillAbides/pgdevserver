@@ -1,10 +1,10 @@
-# goproject-tmpl
+# pgtestserver
 
 ## Install With [bindown](https://github.com/WillAbides/bindown)
 
 ```shell
-bindown template-source add goproject-tmpl https://github.com/WillAbides/goproject-tmpl/releases/latest/download/bindown.yaml
-bindown dependency add goproject-tmpl --source goproject-tmpl -y
+bindown template-source add pgtestserver https://github.com/WillAbides/pgtestserver/releases/latest/download/bindown.yaml
+bindown dependency add pgtestserver --source pgtestserver -y
 ```
 
 ## Usage
@@ -12,11 +12,11 @@ bindown dependency add goproject-tmpl --source goproject-tmpl -y
 <!--- start usage output --->
 
 ```
-Usage: goproject-tmpl [flags]
+Usage: pgtestserver [flags]
 
 Flags:
   -h, --help       Show context-sensitive help.
-      --version    Output the goproject-tmpl version and exit.
+      --version    Output the pgtestserver version and exit.
 ```
 
 <!--- end usage output --->
