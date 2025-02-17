@@ -1,4 +1,4 @@
-package pgtestserver
+package pgdevserver
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 )
 
 func TestCacheServers(t *testing.T) {
-	cacheDir := filepath.Join(xdg.CacheHome, "pgtestserver")
+	cacheDir := filepath.Join(xdg.CacheHome, "pgdevserver")
 	for i := range 3 {
 		server := New(Config{
 			Name: fmt.Sprintf("server%d", i),

@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/willabides/pgtestserver/internal"
+	"github.com/willabides/pgdevserver/internal"
 )
 
 func main() {

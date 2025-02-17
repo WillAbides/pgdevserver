@@ -1,4 +1,4 @@
-package pgtestserver
+package pgdevserver
 
 import (
 	"cmp"
@@ -13,7 +13,7 @@ import (
 	"sync"
 
 	"github.com/adrg/xdg"
-	"github.com/willabides/pgtestserver/internal/bdcache"
+	"github.com/willabides/pgdevserver/internal/bdcache"
 )
 
 const defaultPostgresVersion = "17.2.0"
@@ -81,7 +81,7 @@ func (s *Server) init() {
 	s.initOnce.Do(func() {
 		s.config.PostgresVersion = cmp.Or(s.config.PostgresVersion, defaultPostgresVersion)
 		s.config.Name = cmp.Or(s.config.Name, "default")
-		s.config.CacheDir = cmp.Or(s.config.CacheDir, filepath.Join(xdg.CacheHome, "pgtestserver"))
+		s.config.CacheDir = cmp.Or(s.config.CacheDir, filepath.Join(xdg.CacheHome, "pgdevserver"))
 		s.config.InitDBArgs = slices.Clone(s.config.InitDBArgs)
 		s.config.PostgresOptions = slices.Clone(s.config.PostgresOptions)
 		s.cache = bdcache.Cache{Root: filepath.Join(s.config.CacheDir, "server")}

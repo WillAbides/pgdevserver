@@ -1,4 +1,4 @@
-module github.com/willabides/pgtestserver
+module github.com/willabides/pgdevserver
 
 go 1.24.0
 

@@ -11,8 +11,8 @@ import (
 	"sync"
 	"text/tabwriter"
 
-	"github.com/willabides/pgtestserver"
-	"github.com/willabides/pgtestserver/internal/bdcache"
+	"github.com/willabides/pgdevserver"
+	"github.com/willabides/pgdevserver/internal/bdcache"
 )
 
 type serverCmds struct {
@@ -32,7 +32,7 @@ type listCmd struct {
 
 func (c *listCmd) Run() (errOut error) {
 	ctx := context.Background()
-	servers, err := pgtestserver.ServersFromCache(c.CacheParams.cacheDir())
+	servers, err := pgdevserver.ServersFromCache(c.CacheParams.cacheDir())
 	if err != nil {
 		return err
 	}
@@ -67,18 +67,18 @@ func (c *listCmd) Run() (errOut error) {
 	return nil
 }
 
-func (c *listCmd) listServer(ctx context.Context, server *pgtestserver.Server, tw *tabwriter.Writer) error {
+func (c *listCmd) listServer(ctx context.Context, server *pgdevserver.Server, tw *tabwriter.Writer) error {
 	line := []string{server.ID()}
 	var (
-		status     pgtestserver.Status
+		status     pgdevserver.Status
 		statusOnce sync.Once
 	)
-	getStatus := func() pgtestserver.Status {
+	getStatus := func() pgdevserver.Status {
 		statusOnce.Do(func() {
 			var err error
 			status, err = server.Status(ctx)
 			if err != nil {
-				status = pgtestserver.StatusUnknown
+				status = pgdevserver.StatusUnknown
 			}
 		})
 		return status
@@ -89,7 +89,7 @@ func (c *listCmd) listServer(ctx context.Context, server *pgtestserver.Server, t
 	if c.Status {
 		line = append(line, getStatus().String())
 	}
-	if c.URL && getStatus() == pgtestserver.StatusRunning {
+	if c.URL && getStatus() == pgdevserver.StatusRunning {
 		u, err := server.ConnectionURL(ctx)
 		if err != nil {
 			u = "unknown"
@@ -153,15 +153,15 @@ type rmServerCmd struct {
 
 func (c rmServerCmd) Run() error {
 	ctx := context.Background()
-	srv, err := pgtestserver.ServerFromCache(c.CacheParams.cacheDir(), c.ID)
+	srv, err := pgdevserver.ServerFromCache(c.CacheParams.cacheDir(), c.ID)
 	if err != nil {
 		return err
 	}
 	status, err := srv.Status(ctx)
 	if err != nil {
-		status = pgtestserver.StatusUnknown
+		status = pgdevserver.StatusUnknown
 	}
-	if status != pgtestserver.StatusStopped && !c.Force {
+	if status != pgdevserver.StatusStopped && !c.Force {
 		return fmt.Errorf("server %s is not stopped. Use --force to remove it anyway", c.ID)
 	}
 	serverCache := bdcache.Cache{Root: filepath.Join(c.CacheParams.cacheDir(), "server")}

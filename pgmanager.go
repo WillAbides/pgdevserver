@@ -1,4 +1,4 @@
-package pgtestserver
+package pgdevserver
 
 import (
 	"cmp"
@@ -20,8 +20,8 @@ import (
 
 	"github.com/Masterminds/semver/v3"
 	"github.com/adrg/xdg"
-	"github.com/willabides/pgtestserver/internal"
-	"github.com/willabides/pgtestserver/internal/bdcache"
+	"github.com/willabides/pgdevserver/internal"
+	"github.com/willabides/pgdevserver/internal/bdcache"
 )
 
 //go:generate go run ./internal/writeknownversions knownversions

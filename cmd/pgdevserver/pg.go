@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/willabides/pgtestserver"
+	"github.com/willabides/pgdevserver"
 )
 
 type pgCmd struct {
@@ -18,7 +18,7 @@ type pgListCmd struct {
 }
 
 func (c *pgListCmd) Run() (errOut error) {
-	mgr := pgtestserver.NewPGManager(pgtestserver.PGMConfig{
+	mgr := pgdevserver.NewPGManager(pgdevserver.PGMConfig{
 		CacheDir: filepath.Join(c.CacheParams.cacheDir(), "postgres"),
 	})
 	versions, err := mgr.InstalledVersions()
@@ -37,7 +37,7 @@ type pgAvailableCmd struct {
 
 func (c *pgAvailableCmd) Run() error {
 	ctx := context.Background()
-	mgr := pgtestserver.NewPGManager(pgtestserver.PGMConfig{
+	mgr := pgdevserver.NewPGManager(pgdevserver.PGMConfig{
 		CacheDir: filepath.Join(c.CacheParams.cacheDir(), "postgres"),
 	})
 	versions, err := mgr.AvailableVersions(ctx)

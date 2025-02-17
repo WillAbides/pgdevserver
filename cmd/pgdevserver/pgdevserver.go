@@ -6,7 +6,7 @@ import (
 
 	"github.com/adrg/xdg"
 	"github.com/alecthomas/kong"
-	"github.com/willabides/pgtestserver"
+	"github.com/willabides/pgdevserver"
 )
 
 const (
@@ -19,7 +19,7 @@ const (
 
 var help = kong.Vars{
 	"serverNameHelp": "A name to distinguish this server from others that have the same configuration.",
-	"cacheHelp":      "Cache for binaries and server data. Defaults to $XDG_CACHE_HOME/pgtestserver.",
+	"cacheHelp":      "Cache for binaries and server data. Defaults to $XDG_CACHE_HOME/pgdevserver.",
 	"initDBArgsHelp": "Extra arguments to pass to initdb. May be specified multiple times.",
 	"postgresHelp":   "Postgres version.",
 	"portHelp":       "Port to listen on. When left empty, a random port will be chosen.",
@@ -36,15 +36,15 @@ type serverParams struct {
 	Recommended     bool     `kong:"name='recommended',help='Use recommended options'"`
 }
 
-func (p *serverParams) server(rootCache string) (*pgtestserver.Server, error) {
+func (p *serverParams) server(rootCache string) (*pgdevserver.Server, error) {
 	if p.ID != "" {
-		return pgtestserver.ServerFromCache(rootCache, p.ID)
+		return pgdevserver.ServerFromCache(rootCache, p.ID)
 	}
 	pgOptions := p.PGOptions
 	if p.Recommended {
 		pgOptions = append([]string{recommendedOptions}, pgOptions...)
 	}
-	return pgtestserver.New(pgtestserver.Config{
+	return pgdevserver.New(pgdevserver.Config{
 		PostgresVersion: p.PostgresVersion,
 		CacheDir:        rootCache,
 		Name:            p.ServerName,
@@ -64,7 +64,7 @@ type cacheParams struct {
 }
 
 func (p cacheParams) cacheDir() string {
-	return cmp.Or(p.Cache, filepath.Join(xdg.CacheHome, "pgtestserver"))
+	return cmp.Or(p.Cache, filepath.Join(xdg.CacheHome, "pgdevserver"))
 }
 
 func main() {

@@ -1,4 +1,4 @@
-package pgtestserver
+package pgdevserver
 
 import (
 	"crypto/sha256"
@@ -11,7 +11,7 @@ type Config struct {
 	// PostgresVersion is the version of the postgres binaries to use. Default is "17.2.0"
 	PostgresVersion string `json:"postgres_version,omitempty"`
 
-	// CacheDir is the directory containing the cache. Default is pgtestserver under the xdg cache directory
+	// CacheDir is the directory containing the cache. Default is pgdevserver under the xdg cache directory
 	CacheDir string `json:"-"`
 
 	// Name is a way to distinguish between multiple servers that otherwise have the same configuration.

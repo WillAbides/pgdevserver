@@ -1,4 +1,4 @@
-package pgtestserver
+package pgdevserver
 
 import (
 	"errors"

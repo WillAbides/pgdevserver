@@ -1,4 +1,4 @@
-package pgtestserver
+package pgdevserver
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/willabides/pgtestserver/internal/bdcache"
+	"github.com/willabides/pgdevserver/internal/bdcache"
 )
 
 // getTcpPortFromFile gets the port from a file in the cache directory. If the file does not exist, it creates the file
