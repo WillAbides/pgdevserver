@@ -5,7 +5,7 @@ development environment.
 
 When you start a server, pgdevserver will:
 
-- When an existing server meets your requirements it returns a connection url
+- If an existing server meets your requirements it returns a connection url
   for that server.
 - Checks for the necessary postgres binaries and downloads them if required.
 - Creates and starts a new server.
