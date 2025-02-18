@@ -113,6 +113,8 @@ github.com/kr/pretty v0.3.0/go.mod h1:640gp4NfQd8pI5XOwp5fnNeVWj67G7CFk/SaSQn7NB
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/text v0.1.0 h1:45sCR5RtlFHMR4UwH9sdQ5TC8v0qDQCHnXt+kaKSTVE=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
+github.com/mholt/archives v0.1.1-0.20250217222721-335037c4ea10 h1:2jz8nZteFGTKdFEBM30eS0jt8pp68boGDn95i9vteYs=
+github.com/mholt/archives v0.1.1-0.20250217222721-335037c4ea10/go.mod h1:FNbvqSSUlj7c5agr6keFktsVY5qy7Z23ylVXn+MBz20=
 github.com/nwaples/rardecode/v2 v2.1.0 h1:JQl9ZoBPDy+nIZGb1mx8+anfHp/LV3NE2MjMiv0ct/U=
 github.com/nwaples/rardecode/v2 v2.1.0/go.mod h1:7uz379lSxPe6j9nvzxUZ+n7mnJNgjsRNb6IbvGVHRmw=
 github.com/pierrec/lz4/v4 v4.1.21 h1:yOVMLb6qSIDP67pl/5F7RepeKYu/VmTyEXvuMI5d9mQ=
@@ -142,8 +144,6 @@ github.com/therootcompany/xz v1.0.1/go.mod h1:3K3UH1yCKgBneZYhuQUvJ9HPD19UEXEI0B
 github.com/ulikunitz/xz v0.5.8/go.mod h1:nbz6k7qbPmH4IRqmfOplQw/tblSgqTqBwxkY0oWt/14=
 github.com/ulikunitz/xz v0.5.12 h1:37Nm15o69RwBkXM0J6A5OlE67RZTfzUxTj8fB3dfcsc=
 github.com/ulikunitz/xz v0.5.12/go.mod h1:nbz6k7qbPmH4IRqmfOplQw/tblSgqTqBwxkY0oWt/14=
-github.com/willabides/archives v0.1.1-0.20250216175030-bbb6eb95ca5c h1:iF9fuaBr2BbirISqU5bWuSOiwQlct6cB55Z9hevBRY8=
-github.com/willabides/archives v0.1.1-0.20250216175030-bbb6eb95ca5c/go.mod h1:FNbvqSSUlj7c5agr6keFktsVY5qy7Z23ylVXn+MBz20=
 github.com/xyproto/randomstring v1.0.5 h1:YtlWPoRdgMu3NZtP45drfy1GKoojuR7hmRcnhZqKjWU=
 github.com/xyproto/randomstring v1.0.5/go.mod h1:rgmS5DeNXLivK7YprL0pY+lTuhNQW3iGxZ18UQApw/E=
 github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=

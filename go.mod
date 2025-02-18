@@ -7,7 +7,7 @@ require (
 	github.com/adrg/xdg v0.5.3
 	github.com/alecthomas/kong v1.8.1
 	github.com/jackc/pgx/v5 v5.7.2
-	github.com/mholt/archives v0.1.0
+	github.com/mholt/archives v0.1.1-0.20250217222721-335037c4ea10
 	github.com/rogpeppe/go-internal v1.13.1
 	github.com/stretchr/testify v1.10.0
 )
@@ -39,6 +39,3 @@ require (
 	golang.org/x/text v0.21.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
-
-// remove after https://github.com/mholt/archives/issues/17 is fixed
-replace github.com/mholt/archives => github.com/willabides/archives v0.1.1-0.20250216175030-bbb6eb95ca5c
